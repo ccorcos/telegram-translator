@@ -7,7 +7,7 @@ import { Translate } from "@google-cloud/translate"
  */
 export default async function main(req: Request, res: Response) {
 	const translate = new Translate()
-	const text = "Привет, мир!"
+	const text = "Привет, мир"
 	const target = "en"
 
 	console.log(req)
