@@ -13,7 +13,8 @@
 		"server": "GOOGLE_APPLICATION_CREDENTIALS=credentials.json TELEGRAM_TOKEN=`cat telegram_token.txt` functions-framework --target=default",
 		"build": "rm -rf build && tsc",
 		"deploy": "gcloud functions deploy translate --runtime nodejs10 --entry-point default --trigger-http --set-env-vars TELEGRAM_TOKEN=`cat telegram_token.txt`",
-		"release": "npm run build && npm run deploy"
+		"release": "npm run build && npm run deploy",
+		"test": "GOOGLE_APPLICATION_CREDENTIALS=credentials.json TELEGRAM_TOKEN=`cat telegram_token.txt` ts-node test/test.ts"
 	},
 	"keywords": [],
 	"author": "",

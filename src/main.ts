@@ -21,7 +21,7 @@ export default async function main(req: Request, res: Response) {
 	res.status(200).send(translation)
 }
 
-interface TelegramMessage {
+export interface TelegramMessage {
 	message_id: number
 	from: {
 		id: number

@@ -1,6 +1,9 @@
 import * as got from "got"
-import * as fs from "fs"
-import { telegramApi, handleTelegramMessage } from "../src/main"
+import {
+	telegramApi,
+	handleTelegramMessage,
+	TelegramMessage,
+} from "../src/main"
 
 /**
  * Get the latest updates from the Telegram channel.
@@ -8,12 +11,12 @@ import { telegramApi, handleTelegramMessage } from "../src/main"
  */
 async function getTelegramUpdates() {
 	const response = await got.get(telegramApi + "/getUpdates", { json: true })
-	return response.body
+	return response.body as { result: Array<{ message: TelegramMessage }> }
 }
 
 async function test() {
 	const data = await getTelegramUpdates()
-	for (const update of data.results) {
+	for (const update of data.result) {
 		await handleTelegramMessage(update.message)
 	}
 }
