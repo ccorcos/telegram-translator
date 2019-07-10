@@ -4,7 +4,7 @@
 	"description": "Translate Telegram messages.",
 	"main": "build/main.js",
 	"scripts": {
-		"start": "functions-framework --target=default",
+		"start": "GOOGLE_APPLICATION_CREDENTIALS=credentials.json functions-framework --target=default",
 		"build": "rm -rf build && tsc",
 		"deploy": "gcloud functions deploy translate --runtime nodejs10 --entry-point default --trigger-http",
 		"release": "npm run build && npm run deploy"
