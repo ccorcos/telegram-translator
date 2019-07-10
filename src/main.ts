@@ -7,18 +7,13 @@ import { Translate } from "@google-cloud/translate"
  * the deploy script.
  */
 export default async function main(req: Request, res: Response) {
-	const translate = new Translate()
-	const text = "Привет, мир!"
-	const target = "en"
-
-	console.log(req.body)
-
-	// Translates some text into Russian
-	const [translation] = await translate.translate(text, target)
-	console.log(`Text: ${text}`)
-	console.log(`Translation: ${translation}`)
-
-	res.status(200).send(translation)
+	const update: TelegramUpdate = JSON.parse(req.body)
+	try {
+		await handleTelegramMessage(update.message)
+		res.status(200).send("Thank you!")
+	} catch (error) {
+		res.status(400).send("Error")
+	}
 }
 
 export interface TelegramMessage {
@@ -67,6 +62,11 @@ export interface TelegramMessage {
 	}
 	forward_from_message_id?: number
 	forward_date?: number
+}
+
+export interface TelegramUpdate {
+	update_id: number
+	message: TelegramMessage
 }
 
 /** Translates Russian -> English. */
