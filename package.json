@@ -1,12 +1,13 @@
 {
-	"name": "translate",
+	"name": "telegram-translator",
 	"version": "1.0.0",
-	"description": "boilerplate for gcloud functions",
+	"description": "Translate Telegram messages.",
 	"main": "build/main.js",
 	"scripts": {
 		"start": "functions-framework --target=default",
 		"build": "rm -rf build && tsc",
-		"deploy": "gcloud functions deploy translate --runtime nodejs10 --entry-point default --trigger-http"
+		"deploy": "gcloud functions deploy translate --runtime nodejs10 --entry-point default --trigger-http",
+		"release": "npm run build && npm run deploy"
 	},
 	"keywords": [],
 	"author": "",
