@@ -10,9 +10,9 @@
 		"start": "run-p watch-server watch-tsc",
 		"watch-server": "npm-watch server",
 		"watch-tsc": "tsc --watch",
-		"server": "GOOGLE_APPLICATION_CREDENTIALS=credentials.json functions-framework --target=default",
+		"server": "GOOGLE_APPLICATION_CREDENTIALS=credentials.json TELEGRAM_TOKEN=`cat telegram_token.txt` functions-framework --target=default",
 		"build": "rm -rf build && tsc",
-		"deploy": "gcloud functions deploy translate --runtime nodejs10 --entry-point default --trigger-http",
+		"deploy": "gcloud functions deploy translate --runtime nodejs10 --entry-point default --trigger-http --set-env-vars TELEGRAM_TOKEN=`cat telegram_token.txt`",
 		"release": "npm run build && npm run deploy"
 	},
 	"keywords": [],
@@ -20,11 +20,13 @@
 	"license": "MIT",
 	"dependencies": {
 		"@google-cloud/translate": "4.1.1",
+		"got": "^9.6.0",
 		"lodash": "4.17.13"
 	},
 	"devDependencies": {
 		"@google-cloud/functions-framework": "1.1.1",
 		"@types/express": "4.17.0",
+		"@types/got": "^9.6.0",
 		"@types/lodash": "4.14.136",
 		"@types/node": "12.6.2",
 		"npm-run-all": "4.1.5",

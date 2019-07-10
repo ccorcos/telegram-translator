@@ -1,19 +1,23 @@
 # Telegram Translator
 
 - Translation docs: https://cloud.google.com/translate/docs/quickstart-client-libraries
-- To run locally, we need to setup a user: https://cloud.google.com/docs/authentication/production
-	- Create a new service account
-		```sh
-		gcloud iam service-accounts create chet-dev
+- Telegram bot: https://medium.com/@xabaras/setting-your-telegram-bot-webhook-the-easy-way-c7577b2d6f72
+
+- Create a bot with [BotFather](https://telegram.me/botfather).
+	- Initiate new bot flow
 		```
-	- Add an owner policy
-		```sh
-		gcloud projects add-iam-policy-binding translator-246304 --member "serviceAccount:chet-dev@translator-246304.iam.gserviceaccount.com" --role "roles/owner"
+		/newbot
 		```
-	- Create the credentials file.
-		```sh
-		gcloud iam service-accounts keys create credentials.json --iam-account chet-dev@translator-246304.iam.gserviceaccount.com
+	- Name the bot
 		```
+		translator
+		```
+	- Give the bot a user name
+		```
+		Internet9000EnBot
+		```
+	- Save the API token to the `telegram_token.txt` file in this repo.
+
 
 ---
 
@@ -37,9 +41,17 @@
 	```
 
 ## Development
-- Build the JavaScript
+- Create a new service account
 	```sh
-	npm run build
+	gcloud iam service-accounts create chet-dev
+	```
+- Add an owner policy
+	```sh
+	gcloud projects add-iam-policy-binding translator-246304 --member "serviceAccount:chet-dev@translator-246304.iam.gserviceaccount.com" --role "roles/owner"
+	```
+- Create the credentials file.
+	```sh
+	gcloud iam service-accounts keys create credentials.json --iam-account chet-dev@translator-246304.iam.gserviceaccount.com
 	```
 - Start the development server
 	```sh
