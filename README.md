@@ -1,6 +1,6 @@
 # Telegram Translator
 
-
+- https://cloud.google.com/translate/docs/quickstart-client-libraries
 
 
 ---
