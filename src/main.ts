@@ -7,7 +7,7 @@ import { Translate } from "@google-cloud/translate"
  * the deploy script.
  */
 export default async function main(req: Request, res: Response) {
-	const update: TelegramUpdate = JSON.parse(req.body)
+	const update: TelegramUpdate = req.body
 	try {
 		await handleTelegramMessage(update.message)
 		res.status(200).send("Thank you!")

@@ -17,6 +17,16 @@
 		Internet9000EnBot
 		```
 	- Save the API token to the `telegram_token.txt` file in this repo.
+- Setup the webhook
+	- Find the httpsTrigger url
+		```sh
+		gcloud functions list
+		gcloud functions describe translate
+		```
+	- Set the webhook
+		```sh
+		curl "https://api.telegram.org/bot$(cat telegram_token.txt)/setWebhook?url=https://us-central1-translator-246304.cloudfunctions.net/translate&allowed_updates=message"
+		```
 
 
 ---
