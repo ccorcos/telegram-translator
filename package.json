@@ -22,7 +22,7 @@
 	"dependencies": {
 		"@google-cloud/translate": "4.1.1",
 		"got": "^9.6.0",
-		"lodash": "4.17.13"
+		"lodash": "4.17.21"
 	},
 	"devDependencies": {
 		"@google-cloud/functions-framework": "1.1.1",
